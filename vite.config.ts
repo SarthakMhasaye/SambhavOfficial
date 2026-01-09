@@ -8,8 +8,15 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // This allows your Render domain to access the Vite server
+    allowedHosts: [
+      "sambhavofficial-in.onrender.com"
+    ],
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [
+    react(), 
+    mode === "development" && componentTagger()
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
